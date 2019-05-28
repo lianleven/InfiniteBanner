@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = 'LLInfiniteBanner'
-  s.version      = '1.0'
+  s.name         = 'InfiniteBanner'
+  s.version      = '0.1'
   s.summary      = 'Infinite banner by UICollectionView'
   s.homepage     = 'https://github.com/lianleven/'
   #s.license      = { :type => 'MIT', :file => 'LICENSE' }
@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.platform     = :ios, '7.0'
   s.source_files = 'InfiniteBanner/**/*.{swift}'
+  s.dependency "Kingfisher"
   s.requires_arc = true
 end
 
