@@ -48,6 +48,7 @@ extension UIView {
     func layout(constant c: CGFloat = 0, attribute attr1: NSLayoutConstraint.Attribute, relatedBy relation: NSLayoutConstraint.Relation = .equal, toItem view2: Any?, attribute attr2: NSLayoutConstraint.Attribute, multiplier: CGFloat = 1.0) -> NSLayoutConstraint {
         guard let superview = superview else {
             assert(false, "superview is nil")
+            return NSLayoutConstraint.init()
         }
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint.init(item: self, attribute: attr1, relatedBy: relation, toItem: view2, attribute: attr2, multiplier: multiplier, constant: c)
