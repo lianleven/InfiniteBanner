@@ -1,0 +1,5 @@
+target 'InfiniteBanner' do
+
+  pod 'Kingfisher'
+
+end
