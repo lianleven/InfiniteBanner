@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/lianleven/InfiniteBanner.git', :tag => s.version.to_s }
   s.ios.deployment_target = '10.0'
   s.platform     = :ios, '10.0'
-  s.source_files = 'InfiniteBanner/**/*.{h,swift}'
   s.source_files  = ["InfiniteBanner/*.swift", "InfiniteBanner/InfiniteBanner.h"]
   s.public_header_files = ["InfiniteBanner/InfiniteBanner.h"]
   s.dependency "Kingfisher"
