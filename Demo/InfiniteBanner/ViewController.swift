@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         let banner = InfiniteBanner()
         banner.backgroundColor = UIColor.orange
         view.addSubview(banner)
-        banner.itemSize = CGSize(width: view.bounds.width, height: 160)
+//        banner.itemSize = CGSize(width: view.bounds.width, height: 160)
         banner.fill_width()
         banner.layout(attribute: .top, toItem: view, attribute: .top)
         banner.height(160)

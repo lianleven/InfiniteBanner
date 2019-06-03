@@ -48,7 +48,7 @@ open class InfiniteBanner: UIView {
         collectionView.fill()
         
         timeInterval = 3
-        itemSize = CGSize(width: UIScreen.main.bounds.width, height: 0)
+//        itemSize = CGSize(width: UIScreen.main.bounds.width, height: 0)
     }
     fileprivate func reportStatus() {
         let point = CGPoint(x: collectionView.bounds.midX, y: collectionView.bounds.midY)
@@ -94,7 +94,9 @@ open class InfiniteBanner: UIView {
     }
     public var itemSize: CGSize = .zero{
         didSet {
-            collectionViewLayout.itemSize = itemSize
+            if (!itemSize.equalTo(collectionViewLayout.itemSize)) {
+                collectionViewLayout.itemSize = itemSize
+            }
         }
     }
     public var itemSpacing: CGFloat = 0{
@@ -179,4 +181,9 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
     }
 }
-
+extension InfiniteBanner : UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        itemSize = collectionView.bounds.size
+        return collectionView.bounds.size
+    }
+}
