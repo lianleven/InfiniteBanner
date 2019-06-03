@@ -8,14 +8,14 @@
 
 import UIKit
 
-class InfiniteBannerCell: UICollectionViewCell {
+open class InfiniteBannerCell: UICollectionViewCell {
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -29,5 +29,5 @@ class InfiniteBannerCell: UICollectionViewCell {
         imageView.fill()
     }
     
-    var imageView: UIImageView!
+    public var imageView: UIImageView!
 }
