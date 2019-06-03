@@ -12,10 +12,10 @@
 		04D2AEE0229CD71000D2095B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2AEDE229CD71000D2095B /* Main.storyboard */; };
 		04D2AEE2229CD71300D2095B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D2AEE1229CD71300D2095B /* Assets.xcassets */; };
 		04D2AEE5229CD71300D2095B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2AEE3229CD71300D2095B /* LaunchScreen.storyboard */; };
-		04D2AEFA229D468000D2095B /* InfiniteBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AEF6229D468000D2095B /* InfiniteBanner.swift */; };
-		04D2AEFB229D468000D2095B /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AEF7229D468000D2095B /* UIView+extension.swift */; };
-		04D2AEFC229D468000D2095B /* InfiniteBannerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AEF8229D468000D2095B /* InfiniteBannerLayout.swift */; };
-		04D2AEFD229D468000D2095B /* InfiniteBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AEF9229D468000D2095B /* InfiniteBannerCell.swift */; };
+		04D2AF4B22A4F37A00D2095B /* InfiniteBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4622A4F37A00D2095B /* InfiniteBanner.swift */; };
+		04D2AF4C22A4F37A00D2095B /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4722A4F37A00D2095B /* UIView+extension.swift */; };
+		04D2AF4D22A4F37A00D2095B /* InfiniteBannerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4922A4F37A00D2095B /* InfiniteBannerLayout.swift */; };
+		04D2AF4E22A4F37A00D2095B /* InfiniteBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4A22A4F37A00D2095B /* InfiniteBannerCell.swift */; };
 		4B15BF37F9E431F2CC8534DA /* libPods-InfiniteBanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6ABEFAF0C4D5D40D3A0A32 /* libPods-InfiniteBanner.a */; };
 /* End PBXBuildFile section */
 
@@ -27,12 +27,12 @@
 		04D2AEE1229CD71300D2095B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D2AEE4229CD71300D2095B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D2AEE6229CD71300D2095B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04D2AEF6229D468000D2095B /* InfiniteBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBanner.swift; sourceTree = "<group>"; };
-		04D2AEF7229D468000D2095B /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
-		04D2AEF8229D468000D2095B /* InfiniteBannerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerLayout.swift; sourceTree = "<group>"; };
-		04D2AEF9229D468000D2095B /* InfiniteBannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerCell.swift; sourceTree = "<group>"; };
 		04D2AF4222A4B5C000D2095B /* InfiniteBanner.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = InfiniteBanner.podspec; path = ../InfiniteBanner.podspec; sourceTree = "<group>"; };
-		04D2AF4422A4C50700D2095B /* InfiniteBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteBanner.h; sourceTree = "<group>"; };
+		04D2AF4622A4F37A00D2095B /* InfiniteBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBanner.swift; sourceTree = "<group>"; };
+		04D2AF4722A4F37A00D2095B /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		04D2AF4822A4F37A00D2095B /* InfiniteBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteBanner.h; sourceTree = "<group>"; };
+		04D2AF4922A4F37A00D2095B /* InfiniteBannerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerLayout.swift; sourceTree = "<group>"; };
+		04D2AF4A22A4F37A00D2095B /* InfiniteBannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerCell.swift; sourceTree = "<group>"; };
 		7D6ABEFAF0C4D5D40D3A0A32 /* libPods-InfiniteBanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteBanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A986DEBEA11883BD04214CE5 /* Pods-InfiniteBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteBanner.release.xcconfig"; path = "Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner.release.xcconfig"; sourceTree = "<group>"; };
 		AA00E20FBDF752559E86978A /* Pods-InfiniteBanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteBanner.debug.xcconfig"; path = "Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		04D2AED9229CD71000D2095B /* InfiniteBanner */ = {
 			isa = PBXGroup;
 			children = (
-				04D2AEF5229D468000D2095B /* InfiniteBanner */,
+				04D2AF4522A4F37A00D2095B /* Source */,
 				04D2AEDA229CD71000D2095B /* AppDelegate.swift */,
 				04D2AEDC229CD71000D2095B /* ViewController.swift */,
 				04D2AEDE229CD71000D2095B /* Main.storyboard */,
@@ -83,17 +83,17 @@
 			path = InfiniteBanner;
 			sourceTree = "<group>";
 		};
-		04D2AEF5229D468000D2095B /* InfiniteBanner */ = {
+		04D2AF4522A4F37A00D2095B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				04D2AEF6229D468000D2095B /* InfiniteBanner.swift */,
-				04D2AEF7229D468000D2095B /* UIView+extension.swift */,
-				04D2AEF8229D468000D2095B /* InfiniteBannerLayout.swift */,
-				04D2AEF9229D468000D2095B /* InfiniteBannerCell.swift */,
-				04D2AF4422A4C50700D2095B /* InfiniteBanner.h */,
+				04D2AF4622A4F37A00D2095B /* InfiniteBanner.swift */,
+				04D2AF4722A4F37A00D2095B /* UIView+extension.swift */,
+				04D2AF4822A4F37A00D2095B /* InfiniteBanner.h */,
+				04D2AF4922A4F37A00D2095B /* InfiniteBannerLayout.swift */,
+				04D2AF4A22A4F37A00D2095B /* InfiniteBannerCell.swift */,
 			);
-			name = InfiniteBanner;
-			path = ../../InfiniteBanner;
+			name = Source;
+			path = ../../Source;
 			sourceTree = "<group>";
 		};
 		71BF2947D20CFD1861A1B8B4 /* Frameworks */ = {
@@ -211,10 +211,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D2AEDD229CD71000D2095B /* ViewController.swift in Sources */,
-				04D2AEFD229D468000D2095B /* InfiniteBannerCell.swift in Sources */,
-				04D2AEFC229D468000D2095B /* InfiniteBannerLayout.swift in Sources */,
-				04D2AEFA229D468000D2095B /* InfiniteBanner.swift in Sources */,
-				04D2AEFB229D468000D2095B /* UIView+extension.swift in Sources */,
+				04D2AF4E22A4F37A00D2095B /* InfiniteBannerCell.swift in Sources */,
+				04D2AF4D22A4F37A00D2095B /* InfiniteBannerLayout.swift in Sources */,
+				04D2AF4B22A4F37A00D2095B /* InfiniteBanner.swift in Sources */,
+				04D2AF4C22A4F37A00D2095B /* UIView+extension.swift in Sources */,
 				04D2AEDB229CD71000D2095B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
