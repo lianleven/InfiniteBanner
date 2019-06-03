@@ -9,25 +9,25 @@
 import UIKit
 import Kingfisher
 
-struct BannerItem {
+public struct BannerItem {
     var imageUrl: String = ""
     public init (url: String) {
         self.imageUrl = url
     }
 }
 
-protocol InfiniteBannerDelegate: class {
+public protocol InfiniteBannerDelegate: class {
     func banner(_ banner: InfiniteBanner, didSelectItem item:BannerItem, atIndexPath indexPath: IndexPath)
 }
 
-class InfiniteBanner: UIView {
+open class InfiniteBanner: UIView {
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -135,25 +135,25 @@ class InfiniteBanner: UIView {
 }
 
 extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.items.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfiniteBannerCell", for: indexPath) as! InfiniteBannerCell
         let item = self.items[indexPath.row]
         cell.imageView.kf.setImage(with: URL(string: item.imageUrl), placeholder: placeholder)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = self.items[indexPath.row]
         self.delegate?.banner(self, didSelectItem: item, atIndexPath: indexPath)
     }
     
     // MARK: UIScrollViewDelegate
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageWidth = itemSize.width + itemSpacing
         let periodOffset = pageWidth * CGFloat((items.count / 3))
         let offsetActivatingMoveToBeginning = pageWidth * CGFloat((items.count / 3) * 2);
@@ -166,15 +166,15 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
             scrollView.contentOffset = CGPoint(x: (offsetX + periodOffset),y: 0);
         }
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         tearDownTimer()
     }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         setupTimer()
     }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     }
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
     }
