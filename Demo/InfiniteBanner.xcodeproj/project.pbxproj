@@ -31,6 +31,8 @@
 		04D2AEF7229D468000D2095B /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		04D2AEF8229D468000D2095B /* InfiniteBannerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerLayout.swift; sourceTree = "<group>"; };
 		04D2AEF9229D468000D2095B /* InfiniteBannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerCell.swift; sourceTree = "<group>"; };
+		04D2AF4222A4B5C000D2095B /* InfiniteBanner.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = InfiniteBanner.podspec; path = ../InfiniteBanner.podspec; sourceTree = "<group>"; };
+		04D2AF4422A4C50700D2095B /* InfiniteBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteBanner.h; sourceTree = "<group>"; };
 		7D6ABEFAF0C4D5D40D3A0A32 /* libPods-InfiniteBanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteBanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A986DEBEA11883BD04214CE5 /* Pods-InfiniteBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteBanner.release.xcconfig"; path = "Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner.release.xcconfig"; sourceTree = "<group>"; };
 		AA00E20FBDF752559E86978A /* Pods-InfiniteBanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteBanner.debug.xcconfig"; path = "Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		04D2AECE229CD71000D2095B = {
 			isa = PBXGroup;
 			children = (
+				04D2AF4222A4B5C000D2095B /* InfiniteBanner.podspec */,
 				04D2AED9229CD71000D2095B /* InfiniteBanner */,
 				04D2AED8229CD71000D2095B /* Products */,
 				AA0698F92C9D4078A76F6292 /* Pods */,
@@ -87,6 +90,7 @@
 				04D2AEF7229D468000D2095B /* UIView+extension.swift */,
 				04D2AEF8229D468000D2095B /* InfiniteBannerLayout.swift */,
 				04D2AEF9229D468000D2095B /* InfiniteBannerCell.swift */,
+				04D2AF4422A4C50700D2095B /* InfiniteBanner.h */,
 			);
 			name = InfiniteBanner;
 			path = ../../InfiniteBanner;
