@@ -31,6 +31,13 @@ open class InfiniteBanner: UIView {
         super.init(coder: aDecoder)
         setup()
     }
+    open override func didMoveToWindow() {
+        super.didMoveToWindow()
+        guard let _ = self.window else {
+            return
+        }
+        collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
+    }
     
     fileprivate func setup() {
         collectionViewLayout.scrollDirection = .horizontal
@@ -46,7 +53,7 @@ open class InfiniteBanner: UIView {
         collectionView.dataSource = self
         
         collectionView.fill()
-        
+        collectionView.layoutIfNeeded()
         timeInterval = 3
 //        itemSize = CGSize(width: UIScreen.main.bounds.width, height: 0)
     }
@@ -94,9 +101,7 @@ open class InfiniteBanner: UIView {
     }
     public var itemSize: CGSize = .zero{
         didSet {
-            if (!itemSize.equalTo(collectionViewLayout.itemSize)) {
-                collectionViewLayout.itemSize = itemSize
-            }
+            collectionViewLayout.itemSize = itemSize
         }
     }
     public var itemSpacing: CGFloat = 0{
@@ -126,8 +131,10 @@ open class InfiniteBanner: UIView {
                             return
                         }
                         if (weakSelf.collectionView.contentOffset.equalTo(.zero)) {
-                            weakSelf.collectionView.scrollToItem(at: IndexPath(item: weakSelf.items.count - 1, section: 0), at: .centeredHorizontally, animated: false)
+                            weakSelf.collectionView.scrollToItem(at: IndexPath(item: weakSelf.items.count, section: 0), at: .centeredHorizontally, animated: false)
+                            weakSelf.reportStatus()
                         }
+                        weakSelf.scrollViewDidScroll(weakSelf.collectionView)
                     }
                     
                 }
@@ -145,6 +152,7 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfiniteBannerCell", for: indexPath) as! InfiniteBannerCell
         let item = self.items[indexPath.row]
         cell.imageView.kf.setImage(with: URL(string: item.imageUrl), placeholder: placeholder)
+        cell.imageView.layer.cornerRadius = 4;
         return cell
     }
     
@@ -167,6 +175,13 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
         } else if (offsetX < offsetActivatingMoveToEnd) {
             scrollView.contentOffset = CGPoint(x: (offsetX + periodOffset),y: 0);
         }
+        
+        for cell in collectionView.visibleCells {
+            let centerPoint = self.convert(cell.center,from: scrollView)
+            let d = abs(centerPoint.x - scrollView.frame.width * 0.5) / itemSize.width
+            let scale = 1 - 0.2 * d
+            cell.layer.transform = CATransform3DMakeScale(scale, scale, 1)
+        }
     }
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         tearDownTimer()
@@ -175,15 +190,11 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
         setupTimer()
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        reportStatus()
     }
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        
+        reportStatus()
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
-    }
-}
-extension InfiniteBanner : UICollectionViewDelegateFlowLayout {
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        itemSize = collectionView.bounds.size
-        return collectionView.bounds.size
+        
     }
 }
