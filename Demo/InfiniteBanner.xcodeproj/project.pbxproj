@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		04D2AF4C22A4F37A00D2095B /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4722A4F37A00D2095B /* UIView+extension.swift */; };
 		04D2AF4D22A4F37A00D2095B /* InfiniteBannerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4922A4F37A00D2095B /* InfiniteBannerLayout.swift */; };
 		04D2AF4E22A4F37A00D2095B /* InfiniteBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D2AF4A22A4F37A00D2095B /* InfiniteBannerCell.swift */; };
-		4B15BF37F9E431F2CC8534DA /* libPods-InfiniteBanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6ABEFAF0C4D5D40D3A0A32 /* libPods-InfiniteBanner.a */; };
+		EAC62A5B9925AE9AF36F8626 /* Pods_InfiniteBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC701B139E7085E39C0A581 /* Pods_InfiniteBanner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		04D2AF4822A4F37A00D2095B /* InfiniteBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteBanner.h; sourceTree = "<group>"; };
 		04D2AF4922A4F37A00D2095B /* InfiniteBannerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerLayout.swift; sourceTree = "<group>"; };
 		04D2AF4A22A4F37A00D2095B /* InfiniteBannerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBannerCell.swift; sourceTree = "<group>"; };
-		7D6ABEFAF0C4D5D40D3A0A32 /* libPods-InfiniteBanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteBanner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FC701B139E7085E39C0A581 /* Pods_InfiniteBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfiniteBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A986DEBEA11883BD04214CE5 /* Pods-InfiniteBanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteBanner.release.xcconfig"; path = "Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner.release.xcconfig"; sourceTree = "<group>"; };
 		AA00E20FBDF752559E86978A /* Pods-InfiniteBanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteBanner.debug.xcconfig"; path = "Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B15BF37F9E431F2CC8534DA /* libPods-InfiniteBanner.a in Frameworks */,
+				EAC62A5B9925AE9AF36F8626 /* Pods_InfiniteBanner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 		71BF2947D20CFD1861A1B8B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7D6ABEFAF0C4D5D40D3A0A32 /* libPods-InfiniteBanner.a */,
+				3FC701B139E7085E39C0A581 /* Pods_InfiniteBanner.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,6 +124,7 @@
 				04D2AED3229CD71000D2095B /* Sources */,
 				04D2AED4229CD71000D2095B /* Frameworks */,
 				04D2AED5229CD71000D2095B /* Resources */,
+				648A1F5DE82B09D9E07B23EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +182,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		648A1F5DE82B09D9E07B23EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InfiniteBanner/Pods-InfiniteBanner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B1F76FAA8A555E66E89AEBDC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7587LE2GMX;
 				INFOPLIST_FILE = InfiniteBanner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,7 +391,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lianleven.InfiniteBanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -384,6 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7587LE2GMX;
 				INFOPLIST_FILE = InfiniteBanner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,7 +411,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lianleven.InfiniteBanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

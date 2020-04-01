@@ -1,16 +1,18 @@
 PODS:
-  - Kingfisher (5.5.0)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
 
 DEPENDENCIES:
-  - Kingfisher
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - Kingfisher
+    - SDWebImage
 
 SPEC CHECKSUMS:
-  Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
 
-PODFILE CHECKSUM: 5823886bdaca778755a62aab12b5e0b057b1b705
+PODFILE CHECKSUM: bf2d7f04374acbfd6e526b3262a2e7ba7fe9877a
 
 COCOAPODS: 1.8.0.beta.1

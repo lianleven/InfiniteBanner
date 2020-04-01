@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 
 public struct BannerItem {
     var imageUrl: String = ""
@@ -38,15 +38,7 @@ open class InfiniteBanner: UIView {
         }
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
     }
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        if self.items.count > 0 {
-            let curOffset = self.collectionView.contentOffset.x
-            let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
-            self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
-        }
-//        collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
-    }
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -81,16 +73,14 @@ open class InfiniteBanner: UIView {
     fileprivate func setupTimer () {
         tearDownTimer()
         if (!self.autoScroll) { return }
-//        if (self.itemCount <= 1) { return }
-        timer = Timer.init(timeInterval: TimeInterval(timeInterval), repeats: true, block: {[weak self] (timer) in
-            guard let self = self else {
-                return
-            }
-            let curOffset = self.collectionView.contentOffset.x
-            let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
-            self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
-        })
+        if (self.itemCount <= 1) { return }
+        timer = Timer(timeInterval: TimeInterval(timeInterval), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
+    }
+    @objc fileprivate func timerAction() {
+        let curOffset = self.collectionView.contentOffset.x
+        let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
+        self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
     }
     fileprivate func tearDownTimer () {
         timer?.invalidate()
@@ -122,6 +112,7 @@ open class InfiniteBanner: UIView {
             collectionViewLayout.minimumLineSpacing = itemSpacing
         }
     }
+    public var setBannerImage:((_ url: String) -> UIImage)?
     public var placeholder: UIImage?
     public weak var delegate: InfiniteBannerDelegate?
     fileprivate var _items: [BannerItem] = []
@@ -156,6 +147,7 @@ open class InfiniteBanner: UIView {
 }
 
 extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.items.count
     }
@@ -163,7 +155,9 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfiniteBannerCell", for: indexPath) as! InfiniteBannerCell
         let item = self.items[indexPath.row]
-        cell.imageView.kf.setImage(with: URL(string: item.imageUrl), placeholder: placeholder)
+        
+//        cell.imageView.image = setBannerImage?(item.imageUrl)
+        cell.imageView.sd_setImage(with: URL(string: item.imageUrl), placeholderImage: placeholder)
         cell.imageView.layer.cornerRadius = 4;
         return cell
     }

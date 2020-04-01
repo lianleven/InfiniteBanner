@@ -1,5 +1,6 @@
+use_frameworks!
 target 'InfiniteBanner' do
 
-  pod 'Kingfisher'
+  pod 'SDWebImage'
 
 end
