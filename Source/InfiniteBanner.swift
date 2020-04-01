@@ -38,6 +38,18 @@ open class InfiniteBanner: UIView {
         }
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
     }
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        if self.items.count > 0 {
+            let curOffset = self.collectionView.contentOffset.x
+            let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
+            self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
+        }
+//        collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     fileprivate func setup() {
         collectionViewLayout.scrollDirection = .horizontal
@@ -51,32 +63,32 @@ open class InfiniteBanner: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue);
         
+        itemSize = self.frame.size;
+        itemSpacing = 0;
         collectionView.fill()
         collectionView.layoutIfNeeded()
-        timeInterval = 3
-//        itemSize = CGSize(width: UIScreen.main.bounds.width, height: 0)
+        timeInterval = 5
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidChangeStatusBarOrientationNotification), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
     }
-    fileprivate func reportStatus() {
-        let point = CGPoint(x: collectionView.bounds.midX, y: collectionView.bounds.midY)
-        guard var indexPath = collectionView.indexPathForItem(at: point) else {
-            return
-        }
-        indexPath = IndexPath(item: indexPath.row % (items.count / 3), section: indexPath.section)
+    
+    @objc fileprivate func applicationDidChangeStatusBarOrientationNotification () {
+        collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
     }
     
     // MARK: Timer
     fileprivate func setupTimer () {
         tearDownTimer()
         if (!self.autoScroll) { return }
-        if (self.itemCount <= 1) { return }
+//        if (self.itemCount <= 1) { return }
         timer = Timer.init(timeInterval: TimeInterval(timeInterval), repeats: true, block: {[weak self] (timer) in
-            guard let weakSelf = self else {
+            guard let self = self else {
                 return
             }
-            let curOffset = weakSelf.collectionView.contentOffset.x
-            let targetOffset = curOffset + weakSelf.itemSize.width + weakSelf.itemSpacing
-            weakSelf.collectionView.setContentOffset(CGPoint(x: targetOffset, y: weakSelf.collectionView.contentOffset.y), animated: true)
+            let curOffset = self.collectionView.contentOffset.x
+            let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
+            self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
         })
         RunLoop.main.add(timer!, forMode: .common)
     }
@@ -89,6 +101,7 @@ open class InfiniteBanner: UIView {
     fileprivate var collectionViewLayout: InfiniteBannerLayout = InfiniteBannerLayout()
     fileprivate var timer: Timer?
     fileprivate var itemCount: Int = 0
+    public var animation: Bool = true
     public var autoScroll: Bool = true {
         didSet {
             setupTimer()
@@ -127,14 +140,13 @@ open class InfiniteBanner: UIView {
                 DispatchQueue.main.async {[weak self] in
                     self?.collectionView.reloadData()
                     DispatchQueue.main.async {[weak self] in
-                        guard let weakSelf = self else {
+                        guard let self = self else {
                             return
                         }
-                        if (weakSelf.collectionView.contentOffset.equalTo(.zero)) {
-                            weakSelf.collectionView.scrollToItem(at: IndexPath(item: weakSelf.items.count, section: 0), at: .centeredHorizontally, animated: false)
-                            weakSelf.reportStatus()
-                        }
-                        weakSelf.scrollViewDidScroll(weakSelf.collectionView)
+                        let curOffset = self.collectionView.contentOffset.x
+                        let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
+                        self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
+                        
                     }
                     
                 }
@@ -175,7 +187,9 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
         } else if (offsetX < offsetActivatingMoveToEnd) {
             scrollView.contentOffset = CGPoint(x: (offsetX + periodOffset),y: 0);
         }
-        
+        if !animation {
+            return
+        }
         for cell in collectionView.visibleCells {
             let centerPoint = self.convert(cell.center,from: scrollView)
             let d = abs(centerPoint.x - scrollView.frame.width * 0.5) / itemSize.width
@@ -190,10 +204,8 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
         setupTimer()
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        reportStatus()
     }
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        reportStatus()
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
         
     }

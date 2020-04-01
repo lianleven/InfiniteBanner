@@ -31,6 +31,7 @@ open class InfiniteBannerLayout: UICollectionViewFlowLayout {
                 layoutAttributes = element;
             }
         }
+        print("\nlayoutAttributes: \(layoutAttributes)\ncollectionView:\(collectionView)\nproposedContentOffset: \(proposedContentOffset)")
         return CGPoint(x: layoutAttributes.center.x - collectionView.frame.width * 0.5, y: proposedContentOffset.y)
     }
 }
