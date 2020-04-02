@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         banner.height(160)
         banner.itemSize = CGSize(width: self.view.frame.width - 100, height: 160)
         banner.itemSpacing = -10;
+        banner.delegate = self
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             banner.items = [BannerItem(url: "https://p.ssl.qhimg.com/dmfd/400_300_/t0120b2f23b554b8402.jpg"),BannerItem(url: "https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=571122a7b07eca8016053ee5a1229712/8d5494eef01f3a29c8f5514a9925bc315c607c71.jpg"),BannerItem(url: "https://pub-static.haozhaopian.net/static/web/site/features/cn/crop/images/crop_20a7dc7fbd29d679b456fa0f77bd9525d.jpg")]
         }
@@ -27,5 +28,10 @@ class ViewController: UIViewController {
     }
 
 
+}
+extension ViewController: InfiniteBannerDelegate {
+    func banner(_ banner: InfiniteBanner, didSelectItem item:BannerItem, atIndexPath indexPath: IndexPath) {
+        
+    }
 }
 

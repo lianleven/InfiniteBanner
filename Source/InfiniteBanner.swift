@@ -163,8 +163,10 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.row % (self.items.count / 3)
         let item = self.items[indexPath.row]
-        self.delegate?.banner(self, didSelectItem: item, atIndexPath: indexPath)
+        let indexPathTemp = IndexPath(row: index, section: 0)
+        self.delegate?.banner(self, didSelectItem: item, atIndexPath: indexPathTemp)
     }
     
     // MARK: UIScrollViewDelegate
