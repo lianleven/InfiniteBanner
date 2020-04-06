@@ -78,6 +78,7 @@ open class InfiniteBanner: UIView {
         RunLoop.main.add(timer!, forMode: .common)
     }
     @objc fileprivate func timerAction() {
+        if (!self.autoScroll) { return }
         let curOffset = self.collectionView.contentOffset.x
         let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
         self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
@@ -92,6 +93,7 @@ open class InfiniteBanner: UIView {
     fileprivate var timer: Timer?
     fileprivate var itemCount: Int = 0
     public var animation: Bool = true
+//    public var autoScroll: Bool = true
     public var autoScroll: Bool = true {
         didSet {
             setupTimer()
