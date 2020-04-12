@@ -63,11 +63,20 @@ open class InfiniteBanner: UIView {
         collectionView.layoutIfNeeded()
         timeInterval = 5
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidChangeStatusBarOrientationNotification), name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActiveNotification), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActiveNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     @objc fileprivate func applicationDidChangeStatusBarOrientationNotification () {
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
     }
+    @objc fileprivate func applicationWillResignActiveNotification () {
+        autoScroll = false
+    }
+    @objc fileprivate func applicationDidBecomeActiveNotification () {
+        autoScroll = true
+    }
+    
     
     // MARK: Timer
     fileprivate func setupTimer () {
