@@ -85,9 +85,6 @@ open class InfiniteBanner: UIView {
         if (self.itemCount <= 1) { return }
         timer = Timer(timeInterval: TimeInterval(timeInterval), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
-        if items.count >= 3 {
-            timerAction()
-        }
     }
     @objc fileprivate func timerAction() {
         if (!self.autoScroll) { return }
@@ -109,6 +106,9 @@ open class InfiniteBanner: UIView {
     public var autoScroll: Bool = true {
         didSet {
             setupTimer()
+            if items.count >= 3 {
+                timerAction()
+            }
         }
     }
     public var timeInterval: Int = 3 {
