@@ -96,6 +96,21 @@ open class InfiniteBanner: UIView {
         timer?.invalidate()
         timer = nil
     }
+    fileprivate func reload() {
+        DispatchQueue.main.async {[weak self] in
+            self?.collectionView.reloadData()
+            DispatchQueue.main.async {[weak self] in
+                guard let self = self else {
+                    return
+                }
+                let curOffset = self.collectionView.contentOffset.x
+                let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
+                self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
+                
+            }
+            
+        }
+    }
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var collectionViewLayout: InfiniteBannerLayout = InfiniteBannerLayout()
@@ -107,7 +122,7 @@ open class InfiniteBanner: UIView {
         didSet {
             setupTimer()
             if items.count >= 3 {
-                timerAction()
+                reload()
             }
         }
     }
@@ -142,22 +157,11 @@ open class InfiniteBanner: UIView {
                     _items.append(contentsOf: newValue)
                 }
                 setupTimer()
-                DispatchQueue.main.async {[weak self] in
-                    self?.collectionView.reloadData()
-                    DispatchQueue.main.async {[weak self] in
-                        guard let self = self else {
-                            return
-                        }
-                        let curOffset = self.collectionView.contentOffset.x
-                        let targetOffset = curOffset + self.itemSize.width + self.itemSpacing
-                        self.collectionView.setContentOffset(CGPoint(x: targetOffset, y: self.collectionView.contentOffset.y), animated: true)
-                        
-                    }
-                    
-                }
+                reload()
             }
         }
     }
+    
 }
 
 extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
