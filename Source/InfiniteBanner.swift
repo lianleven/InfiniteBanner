@@ -177,6 +177,7 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
 //        cell.imageView.image = setBannerImage?(item.imageUrl)
         cell.imageView.sd_setImage(with: URL(string: item.imageUrl), placeholderImage: placeholder)
         cell.imageView.layer.cornerRadius = 4;
+        tranform(cell: cell)
         return cell
     }
     
@@ -205,10 +206,7 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
             return
         }
         for cell in collectionView.visibleCells {
-            let centerPoint = self.convert(cell.center,from: scrollView)
-            let d = abs(centerPoint.x - scrollView.frame.width * 0.5) / itemSize.width
-            let scale = 1 - 0.2 * d
-            cell.layer.transform = CATransform3DMakeScale(scale, scale, 1)
+            tranform(cell: cell)
         }
     }
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -222,5 +220,21 @@ extension InfiniteBanner: UICollectionViewDataSource, UICollectionViewDelegate {
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         collectionView.contentOffset = collectionViewLayout.targetContentOffset(forProposedContentOffset: collectionView.contentOffset, withScrollingVelocity: .zero)
         
+    }
+    fileprivate func tranform(cell: UICollectionViewCell) {
+        if !animation {
+            return
+        }
+        let centerPoint = self.convert(cell.center,from: collectionView)
+        let d = abs(centerPoint.x - collectionView.frame.width * 0.5) / itemSize.width
+        var scale = 1 - 0.2 * d
+        
+        if scale < 0 {
+            scale = 0
+        }
+        if scale > 1 {
+            scale = 1
+        }
+        cell.layer.transform = CATransform3DMakeScale(scale, scale, 1)
     }
 }
