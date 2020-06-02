@@ -12,9 +12,11 @@ import SDWebImage
 public struct BannerItem {
     var imageUrl: String = ""
     var link: String = ""
-    public init (url: String, link: String = "") {
+    var title: String = ""
+    public init (url: String, link: String = "", title: String = "") {
         self.imageUrl = url
         self.link = link
+        self.title = title
     }
 }
 
