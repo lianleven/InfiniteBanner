@@ -27,7 +27,7 @@
 		04D2AEE1229CD71300D2095B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D2AEE4229CD71300D2095B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D2AEE6229CD71300D2095B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04D2AF4222A4B5C000D2095B /* InfiniteBanner.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = InfiniteBanner.podspec; path = ../InfiniteBanner.podspec; sourceTree = "<group>"; };
+		04D2AF4222A4B5C000D2095B /* InfiniteBanner.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = InfiniteBanner.podspec; path = ../InfiniteBanner.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		04D2AF4622A4F37A00D2095B /* InfiniteBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteBanner.swift; sourceTree = "<group>"; };
 		04D2AF4722A4F37A00D2095B /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		04D2AF4822A4F37A00D2095B /* InfiniteBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteBanner.h; sourceTree = "<group>"; };
